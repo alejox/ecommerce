@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { filterTitle, getProducts } from '../store/slices/products.slice';
+import { filterCategory, filterTitle, getProducts } from '../store/slices/products.slice';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, Card, Col, FormControl, InputGroup, ListGroup, Row } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
@@ -31,7 +31,7 @@ const Home = () => {
     }
 
     const selectCategory = (id) => {
-        alert(id)
+        dispatch(filterCategory(id))
     }
 
     return (
@@ -43,7 +43,7 @@ const Home = () => {
                     <ListGroup>
                         {
                             categories.map(category => (
-                                <ListGroup.Item key={category.id} onClick={() => selectCategory(category.id)}>
+                                <ListGroup.Item key={category.id} onClick={() => selectCategory(category.id)} style={{ cursor:'pointer'}}>
                                     {category.name}
                                 </ListGroup.Item>
                             ))
