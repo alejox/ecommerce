@@ -24,6 +24,8 @@ const Home = () => {
     }, [dispatch])
     console.log(categories)
 
+    
+
     const filterProducts = () => {
         dispatch(filterTitle(search));
     }
