@@ -11,14 +11,14 @@ const ProductDetail = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
 
-    const products = useSelector(state => state.product)
+    const products = useSelector(state => state.products)
 
     useEffect(() => {
         axios.get(`https://ecommerce-api-react.herokuapp.com/api/v1/products/`)
             .then(res => {
-                const productSearched = res.data.data.product.find(productItem => productItem.id === Number(id));
+                const productSearched = res.data.data.products.find(productItem => productItem.id === Number(id));
                 setProduct(productSearched);
-                dispatch(filterCategory(productSearched.product.category.id));
+                dispatch(filterCategory(productSearched.category.id));
             });
             
     }, [id, dispatch]);
@@ -26,7 +26,7 @@ const ProductDetail = () => {
     return (
         <div className='container'>
             <h2>{product.title}</h2>
-            <p>{product.category}</p>
+            <p>{product.category?.name}</p>
             <img src={product.productImgs} alt="" className='fluid-img w-100' />
             <p>{product.description}</p>
             <p><b>Price: </b> ${product.price}</p>

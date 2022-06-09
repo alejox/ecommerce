@@ -13,7 +13,7 @@ const Home = () => {
     const [search, setSearch] = useState('');
     const [categories, setCategories] = useState([]);
 
-    const products = useSelector(state => state.products.data?.products)
+    const products = useSelector(state => state.products)
 
     useEffect(() => {
         dispatch(getProducts());
