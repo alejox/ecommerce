@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { filterCategory } from '../store/slices/products.slice';
 
 const ProductDetail = () => {
@@ -10,6 +10,7 @@ const ProductDetail = () => {
 
     const { id } = useParams();
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const products = useSelector(state => state.products)
 
@@ -33,7 +34,7 @@ const ProductDetail = () => {
 
             {
                 products?.map(productItem => (
-                    <li>{productItem.title}</li>
+                    <li key={productItem.id} onClick={() => navigate(`/products/${productItem.id}`)} style={{cursor:'pointer'}}>{productItem.title}</li>
                 ))
             }
         </div>

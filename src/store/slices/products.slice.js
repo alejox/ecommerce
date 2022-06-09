@@ -30,7 +30,6 @@ export const filterTitle = (query) => (dispatch) => {
 
 export const filterCategory = (id) => (dispatch) => {
     dispatch(setIsLoading(true));
-    console.log(id)
     return axios.get(`https://ecommerce-api-react.herokuapp.com/api/v1/products?category=${id}`)
         .then(res => dispatch(setProducts(res.data.data.products)))
         .finally(() => dispatch(setIsLoading(false)));
