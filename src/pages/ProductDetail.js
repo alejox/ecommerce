@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { Col, ListGroup, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { filterCategory } from '../store/slices/products.slice';
@@ -21,22 +22,36 @@ const ProductDetail = () => {
                 setProduct(productSearched);
                 dispatch(filterCategory(productSearched.category.id));
             });
-            
+
     }, [id, dispatch]);
     console.log(product);
     return (
         <div className='container'>
-            <h2>{product.title}</h2>
-            <p>{product.category?.name}</p>
-            <img src={product.productImgs} alt="" className='fluid-img w-100' />
-            <p>{product.description}</p>
-            <p><b>Price: </b> ${product.price}</p>
+            <Row>
+                <Col >
+                    <img src={product.productImgs} alt="" className='fluid-img w-100' />
+                    <p>{product.category?.name}</p>
+                </Col>
+                <Col>
+                    <h2>{product.title}</h2>
+                    <p>{product.description}</p>
+                    <p><b>Price: </b> ${product.price}</p>
+                </Col>
+            </Row>
+            <Row>
+                <h2>Related products</h2>
+                <ListGroup variant="flush">
+                        {
+                            products?.map(productItem => (
+                            <ListGroup.Item key={productItem.id} onClick={() => navigate(`/products/${productItem.id}`)} style={{ cursor: 'pointer' }}>
+                                {productItem.title}
+                            </ListGroup.Item>
+                        ))
+                    }
+                </ListGroup>
 
-            {
-                products?.map(productItem => (
-                    <li key={productItem.id} onClick={() => navigate(`/products/${productItem.id}`)} style={{cursor:'pointer'}}>{productItem.title}</li>
-                ))
-            }
+            </Row>
+
         </div>
     );
 };

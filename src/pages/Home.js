@@ -22,9 +22,6 @@ const Home = () => {
             .then(res => setCategories(res.data.data.categories)
             )
     }, [dispatch])
-    console.log(categories)
-
-    
 
     const filterProducts = () => {
         dispatch(filterTitle(search));
@@ -37,6 +34,7 @@ const Home = () => {
     return (
         <div>
             <h1>Home</h1>
+            <h2>Categories</h2>
 
             <Row>
                 <Col lg={3}>
