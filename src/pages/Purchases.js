@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { ListGroup } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getPurchases } from '../store/slices/purchases.slice';
@@ -18,23 +19,24 @@ const Purchases = () => {
     return (
         <div>
             <h2>Purchases</h2>
-
+            <ListGroup variant="flush">
             <ul>
                 {
                     purchases.map(purchased => (
                         <ul key={purchased.id}>
                             {purchased.cart.products.map(product => (
-                                <li
+                                <ListGroup.Item
                                     key={product.id}
                                     style={{ cursor: 'pointer' }}
                                     onClick={() => navigate(`/products/${product.id}`)}
                                 >
                                     {product.title}
-                                </li>
+                                </ListGroup.Item>
                             ))}</ul>
                     ))
                 }
             </ul>
+            </ListGroup>
 
         </div>
     );
