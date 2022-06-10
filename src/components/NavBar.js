@@ -1,9 +1,16 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
+import { getCart } from '../store/slices/cart.slices';
+import { useDispatch } from 'react-redux';
 
 const NavBar = () => {
 
     const logout = () => localStorage.setItem('token', '');
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getCart());
+    },[dispatch]);
 
     return (
         <div>
