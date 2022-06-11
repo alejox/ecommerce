@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
-import { getCart } from '../store/slices/cart.slices';
+import { getCart } from '../store/slices/cart.slice';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import ProductsSidebar from './ProductsSidebar';

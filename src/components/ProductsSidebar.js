@@ -26,7 +26,9 @@ const ProductsSidebar = ({ show, handleClose }) => {
                         products?.map(cartProduct =>(
                             <ListGroup.Item 
                             key={cartProduct.id} 
+                            style={{ cursor: 'pointer' }}
                             onClick={() => selectProducts(cartProduct)}>{cartProduct?.title}
+                            
                             </ListGroup.Item>
                         ))
                     }

@@ -1,13 +1,15 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Col, ListGroup, Row } from 'react-bootstrap';
+import { Button, Col, ListGroup, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
+import { addToCart } from '../store/slices/cart.slice';
 import { filterCategory } from '../store/slices/products.slice';
 
 const ProductDetail = () => {
 
     const [product, setProduct] = useState({});
+    const [quantity, setQuantity] = useState("");
 
     const { id } = useParams();
     const dispatch = useDispatch();
@@ -25,12 +27,28 @@ const ProductDetail = () => {
 
     }, [id, dispatch]);
     console.log(product);
+
+    const addPurchase = () => {
+        const newPurchase ={
+            id,
+            quantity
+        }
+        dispatch(addToCart(newPurchase))
+    }
+
     return (
         <div className='container'>
             <Row>
                 <Col >
+                    <h2>{product.category?.name}</h2>
                     <img src={product.productImgs} alt="" className='fluid-img w-100' />
-                    <p>{product.category?.name}</p>
+                    <input 
+                    type="number" 
+                    placeholder='quantity' 
+                    onChange={e => setQuantity(e.target.value)}
+                    value={quantity}
+                    />
+                    <Button onClick={addPurchase}>Add to cart</Button>
                 </Col>
                 <Col>
                     <h2>{product.title}</h2>
