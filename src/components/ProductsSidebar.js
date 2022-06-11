@@ -1,11 +1,13 @@
 import React from 'react';
-import { ListGroup, Offcanvas } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
+import { Button, ListGroup, Offcanvas } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { buy } from '../store/slices/cart.slice';
 
 const ProductsSidebar = ({ show, handleClose }) => {
 
     const products = useSelector(state => state.cart);
+    const dispatch = useDispatch();
 
     const navigate = useNavigate();
 
@@ -33,8 +35,10 @@ const ProductsSidebar = ({ show, handleClose }) => {
                         ))
                     }
                     </ListGroup>
+                    <Button variant="warning" onClick={() => dispatch(buy())}>Checkout</Button>
                 </Offcanvas.Body>
             </Offcanvas>
+
         </div>
     );
 };
