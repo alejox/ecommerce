@@ -36,6 +36,7 @@ const ProductDetail = () => {
         dispatch(addToCart(newPurchase))
     }
 
+    
     return (
         <div className='container'>
             <Row>
