@@ -32,7 +32,12 @@ const Login = () => {
         <div className='container mt-5'>
             <Card style={{ maxWidth:'500px'}} className='mx-auto'>
                 <Card.Body>
+                <div className='text-center'>
                 <h1>Login</h1>
+                <p><b>Test data</b></p>
+                <p><i className="bi bi-person-check"/> mason@gmail.com</p>
+                <p><i className="bi bi-lock"></i> mason1234</p>
+                </div>
                     <Form onSubmit={handleSubmit(submit)} >
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Email address</Form.Label>

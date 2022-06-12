@@ -34,17 +34,19 @@ const NavBar = () => {
 
     return (
         <div>
-            <Navbar bg="light" expand="lg">
+            <Navbar bg="light" expand="md lg">
                 <Container>
                     <Navbar.Brand href="#/">E-commerce</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
+                        <div >
                         <Nav className="me-auto">
-                            <Nav.Link href="#/login">Login</Nav.Link>
-                            <Nav.Link href="#/Purchases">Purchases</Nav.Link>
-                            <Nav.Link role="button" onClick={handleShow}>Cart (Sidebar)</Nav.Link>
-                            <Nav.Link role="button" onClick={logout}>Log out</Nav.Link>
+                            <Nav.Link href="#/login"><i className="bi bi-person-check"></i></Nav.Link>
+                            <Nav.Link href="#/Purchases"><i className="bi bi-archive"></i></Nav.Link>
+                            <Nav.Link role="button" onClick={handleShow}><i className="bi bi-cart2"></i></Nav.Link>
+                            <Nav.Link role="button" onClick={logout}><i className="bi bi-person-dash"></i></Nav.Link>
                         </Nav>
+                        </div>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
